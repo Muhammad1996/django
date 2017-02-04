@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from django.template.defaultfilters import slugify
-
+from django.contrib.auth.models import User
 from django.db import models
 
 length_value = 128
@@ -37,3 +37,15 @@ class Page(models.Model):
 
     def __unicode__(self):  # For Python 2, use __unicode__ too
         return self.name
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+
+    website = models.URLField(blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+
+    def __str__(self):  # For Python 2, use __unicode__ too
+        return self.user.username
+
+    def __unicode__(self):  # For Python 2, use __unicode__ too
+        return self.user.username
