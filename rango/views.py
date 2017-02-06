@@ -32,7 +32,7 @@ def index(request):
 	context_dict = {'categories': category_list, 'pages':page_list}
 
 	visitor_cookie_handler(request)
-	context_dict['visit'] = request.session['visits']
+	context_dict['visits'] = request.session['visits']
 
 	response = render(request, 'rango/index.html', context_dict)
 	return response
@@ -41,7 +41,7 @@ def about(request):
 	context_dict = {'boldmessage': "This tutorial has been put together by Muhammad Yousaf"}
 
 	visitor_cookie_handler(request)
-	context_dict['visit'] = request.session['visits']
+	context_dict['visits'] = request.session['visits']
 
 	response = render(request, 'rango/about.html', context=context_dict)
 	return response
